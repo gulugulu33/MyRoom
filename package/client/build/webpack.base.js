@@ -28,7 +28,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../index.html'),
+      template: path.resolve(__dirname, '../index.html'), //配置文件模板
       filename: 'index.html',
       title: 'template-project'
     })

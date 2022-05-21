@@ -1,3 +1,8 @@
 .app {
   background-color: #eeeeee;
 }
+
+.flex-row-space-between {
+  display: flex;
+  justify-content: space-between;
+}
