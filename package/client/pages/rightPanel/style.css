@@ -6,3 +6,7 @@
   flex-shrink: 0;
   background-color: #ffffff;
 }
+
+.text-config-item {
+  margin: 4px 0;
+}

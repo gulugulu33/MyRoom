@@ -4,11 +4,12 @@ import './style.css'
 
 interface IDrawPanelProps {
   data: any,
-  setRightPanelType: Function
+  setRightPanelType: Function,
+  setRightPanelElementId: Function
 }
 
 export default memo(function DrawPanel(props: IDrawPanelProps) {
-  const {data, setRightPanelType} = props
+  const {data, setRightPanelType, setRightPanelElementId} = props
   
   const generateContext = () => {
     const output = []
@@ -19,20 +20,21 @@ export default memo(function DrawPanel(props: IDrawPanelProps) {
             key={item.id}
             onClick={() => {
               setRightPanelType(item.type)
+              setRightPanelElementId(item.id)
             }}
             style={{
+              position: 'absolute',
               color: item.color,
               fontSize: item.size,
               width: item.width,
               height: item.height,
               left: item.left,
               top: item.top,
-              lineHeight: '18px',
-              textIndent: '10px',
-              borderRadius: '20px',
-              border: '2px solid #ae626e',
-              position: 'absolute',
-              backgroundColor: '#dbb3b3'
+              // lineHeight: '18px',
+              // textIndent: '10px',
+              // borderRadius: '20px',
+              // border: '2px solid #ae626e',
+              // backgroundColor: '#dbb3b3'
             }}
            >
             {item.data}
