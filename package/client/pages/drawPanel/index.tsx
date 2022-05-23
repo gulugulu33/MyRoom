@@ -18,20 +18,20 @@ export default memo(function DrawPanel(props: IDrawPanelProps) {
     drop: (_,monitor) => {
       const { x, y } = monitor.getClientOffset()
       const currentX = x - 310
-      const CurrentY = y - 20
+      const currentY = y - 20
 
       setData([
         ...data,
         {
-          id: `text-${data.lenght - 1}`,
+          id:  `text-${data.length + 1}`,
           type: 'text',
-          data: 'new char',
+          data: 'Line of text',
           color: '#000000',
           size: '12px',
           width: '100px',
           height: '20px',
           left: `${currentX}px`,
-          top: `${CurrentY}px`
+          top: `${currentY}px`
         }
       ])
     }

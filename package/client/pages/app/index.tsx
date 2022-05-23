@@ -51,8 +51,10 @@ export default function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='flex-row-space-between app'>
-      <LeftPanel></LeftPanel>
-      <DrawPanel data={drawPanelData}
+      <LeftPanel data={drawPanelData}></LeftPanel>
+      <DrawPanel
+        key={`${Math.floor(Math.random() * 1000)}-${drawPanelData.length}`} 
+        data={drawPanelData}
         setData={setDrawPanelData}
         setRightPanelType={setRightPanelType}
         setRightPanelElementId={setRightPanelElementId}
