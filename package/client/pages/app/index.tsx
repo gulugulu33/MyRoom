@@ -53,6 +53,7 @@ export default function App() {
       <div className='flex-row-space-between app'>
       <LeftPanel></LeftPanel>
       <DrawPanel data={drawPanelData}
+        setData={setDrawPanelData}
         setRightPanelType={setRightPanelType}
         setRightPanelElementId={setRightPanelElementId}
        ></DrawPanel>

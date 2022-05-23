@@ -1,16 +1,42 @@
 import React, { memo } from 'react'
-import { COMPONENT_TYPE } from '../../constants'
+import { useDrop } from 'react-dnd'
+import { COMPONENT_TYPE, RIGHT_PANEL_TYPE } from '../../constants'
 import './style.css'
 
 interface IDrawPanelProps {
   data: any,
+  setData: Function
   setRightPanelType: Function,
   setRightPanelElementId: Function
 }
 
 export default memo(function DrawPanel(props: IDrawPanelProps) {
-  const {data, setRightPanelType, setRightPanelElementId} = props
+  const {data, setData, setRightPanelType, setRightPanelElementId} = props
   
+  const [,drop] = useDrop(() => ({
+    accept: RIGHT_PANEL_TYPE.TEXT,
+    drop: (_,monitor) => {
+      const { x, y } = monitor.getClientOffset()
+      const currentX = x - 310
+      const CurrentY = y - 20
+
+      setData([
+        ...data,
+        {
+          id: `text-${data.lenght - 1}`,
+          type: 'text',
+          data: 'new char',
+          color: '#000000',
+          size: '12px',
+          width: '100px',
+          height: '20px',
+          left: `${currentX}px`,
+          top: `${CurrentY}px`
+        }
+      ])
+    }
+  }))
+
   const generateContext = () => {
     const output = []
     for(const item of data) {
@@ -19,7 +45,7 @@ export default memo(function DrawPanel(props: IDrawPanelProps) {
           <div
             key={item.id}
             onClick={() => {
-              setRightPanelType(item.type)
+              setRightPanelType(RIGHT_PANEL_TYPE.TEXT)
               setRightPanelElementId(item.id)
             }}
             style={{
@@ -46,7 +72,7 @@ export default memo(function DrawPanel(props: IDrawPanelProps) {
   }
 
   return (
-    <div className='draw-panel'>
+    <div className='draw-panel' ref={drop}>
       {generateContext()}
     </div>
   )

@@ -4,8 +4,8 @@ import { COMPONENT_TYPE } from '../../constants'
 import './style.css'
 
 export default memo(function TextComponent() {
-  const [, drag] = useDrag(() => ({
-    type: 'text'
+  const [_, drag] = useDrag(() => ({
+    type: COMPONENT_TYPE.TEXT
     // collect: (monitor) => ({
     //   isDragging: !!monitor.isDragging()
     // })
